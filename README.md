@@ -1,11 +1,11 @@
-# Geomatic – Natural coastal vegetation baseline, Tarut Bay
+# Geomatic – Mangrove and coastal vegetation baseline, Tarut Bay
 
 **Arab Youth Space Hackathon 2026 · Challenge 813 – Ecosystem Health, Biodiversity & Blue Carbon · Proof of concept**
 
-> **Working title:** *Geomatic: A satellite-first baseline for coastal vegetation health and a blue-carbon scenario in Tarut Bay, using NASA EMIT hyperspectral and Sentinel-2 data.*
-> (Mangrove identity of the dense-tree class is **not confirmed** – see Limitations.)
+> **Working title:** *Geomatic: A satellite-first baseline for mangrove health and a blue-carbon scenario in Tarut Bay, using NASA EMIT hyperspectral and Sentinel-2 data.*
+> (The largest dense patches were checked as mangrove on Esri high-resolution imagery by the analyst; the whole dense-tree class is not verified pixel by pixel – see Limitations.)
 
-**الملخص بالعربية:** نقارن في خليج تاروت (≈233 هكتاراً) بين بيانات NASA EMIT الطيفية (285 حزمة) وSentinel-2 (9 حزم) في فصل الغطاء النباتي الكثيف عن النبات المنخفض والماء/الأرض الجرداء، اعتماداً على 80 نقطة مرجعية مسمّاة بصرياً. لم تتفوق EMIT على Sentinel-2 في هذه العينة الصغيرة (≈0.65 لكليهما، والفرق غير معنوي)، ويحتاج استخدام EMIT إلى معايرة مكانية دقيقة. كل النتائج تُعاد بتشغيل دفتر Jupyter. لا تُستخدم بيانات درون، ولا يُستنتج أي تدهور من مقارنة سنتين، ولم يُؤكَّد أن الغطاء الكثيف مانغروف.
+**الملخص بالعربية:** نقارن في خليج تاروت (≈233 هكتاراً) بين بيانات NASA EMIT الطيفية (285 حزمة) وSentinel-2 (9 حزم) في فصل الغطاء النباتي الكثيف عن النبات المنخفض والماء/الأرض الجرداء، اعتماداً على 80 نقطة مرجعية مسمّاة بصرياً. لم تتفوق EMIT على Sentinel-2 في هذه العينة الصغيرة (≈0.65 لكليهما، والفرق غير معنوي)، ويحتاج استخدام EMIT إلى معايرة مكانية دقيقة. كل النتائج تُعاد بتشغيل دفتر Jupyter. لا تُستخدم بيانات درون، ولا يُستنتج أي تدهور من مقارنة سنتين، وقد تحقق المحلل بصرياً من أن أكبر البقع الكثيفة مانغروف على صور Esri عالية الدقة، دون تحقق ميداني أو تأكيد لكل بكسل.
 
 ## What this repository does
 1. Reads clipped **NASA EMIT L2A** reflectance (285 bands, 60 m) + mask and **Sentinel-2 L2A** (9 bands) for one study polygon.
@@ -28,7 +28,7 @@ Everything runs from `notebooks/01_tarut_baseline.ipynb` (executed outputs are s
 * Hyperspectral EMIT did **not** beat multispectral Sentinel-2 on this reference; differences are within noise.
 * Co-registration matters: EMIT↔S2 NDVI correlation rises from r = 0.73 to 0.85 with a ~(+30 m E, −60 m N) shift of the S2 grid, but RMSE stays ≈ 0.35.
 * Dense-tree share ≈ 27 % (95 % bootstrap 21–33 %) of ≈ 237 ha ≈ 64 ha.
-* Soil-carbon *scenario* (not a measurement): 64 ha × 43 ± 5 Mg C ha⁻¹ ≈ 2.8 kt C (range 1.9–3.7 kt), if all dense-tree area were mangrove with Red Sea soil stocks.
+* Soil-carbon *scenario* (not a measurement): 64 ha × 43 ± 5 Mg C ha⁻¹ ≈ 2.8 kt C (range 1.9–3.7 kt), assuming the dense-tree area is mangrove with Red Sea soil stocks (verified for the largest patches only).
 
 ## Data (included in `data/`, small clips)
 | Folder | Content | Source / identifier | Date |
@@ -50,7 +50,7 @@ Tested with Python 3.13; runtime ≈ 1–2 minutes. Input → output example: `d
 
 ## Limitations (please read)
 * **Reference:** 80 points labelled by **one analyst** from 10 m Sentinel-2 imagery (true colour, NIR-R-G, NDVI); 14 points first called *dense tree* were corrected to *water* after the NIR-R-G / NDVI check (raw labels kept). No inter-analyst agreement, no field or drone data. Accuracy intervals are wide (±0.10).
-* **Mangrove identity is not confirmed.** The class is *dense tree cover*; species cannot be confirmed at 10 m.
+* **Mangrove identity:** the analyst visually verified the largest candidate dense patches as mangrove on Esri high-resolution imagery. This is a single-analyst visual check, with no field or drone confirmation, and it does not cover every pixel of the *dense tree* class; species cannot be confirmed at 10 m.
 * **Dates differ** (EMIT 12 Aug 11:09 UTC, Sentinel-2 16 Aug ≈ 07:00 UTC) – tide, sun angle and the 4-day gap are uncontrolled. EMIT aerosol optical depth ≈ 0.5 (dust/haze).
 * **EMIT geolocation** is imperfect; the shift was estimated from the same pair of scenes (a calibration, not an independent test). EMIT wavelengths are assumed to follow the standard EMIT grid (band 38 ≈ 665 nm, band 65 ≈ 865 nm).
 * **No change/degradation claim**: only one date per sensor is used.
