@@ -1,0 +1,21 @@
+{
+ "shift_east_north_m": [
+  30.0,
+  -60.0
+ ],
+ "offset_r_no_shift": 0.7289377034016676,
+ "offset_r_best": 0.8527571465047559,
+ "dense_tree_share": 0.27037995237064305,
+ "dense_tree_share_95ci": [
+  0.2072503698491737,
+  0.32725421267229565
+ ],
+ "area_ha_valid": 236.9980610052241,
+ "n_points": 80,
+ "stratum_area_shares": {
+  "A_dense_ndvi_gt0.6": 0.15638305549541748,
+  "B_mid_ndvi_0.3_0.6": 0.2527603377354406,
+  "C_low_ndvi_0.1_0.3": 0.18373385292631883,
+  "D_water_bare_ndvi_le0.1": 0.40712275384282315
+ }
+}

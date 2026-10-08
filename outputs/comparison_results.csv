@@ -1,0 +1,7 @@
+,oa,oa_area_weighted,n,ci95_halfwidth
+S2 NDVI threshold (0.1/0.6),0.612,0.654,80.0,0.107
+"EMIT NDVI threshold (S2 thresholds, shifted)",0.3,0.359,80.0,0.1
+S2 RF red+NIR,0.633,0.662,80.0,0.106
+S2 RF 9 bands,0.656,0.691,80.0,0.104
+EMIT RF 285 bands (shifted),0.647,0.655,80.0,0.105
+EMIT RF 285 bands (no shift),0.508,0.525,79.0,0.11
